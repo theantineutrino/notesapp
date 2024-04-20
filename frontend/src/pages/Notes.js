@@ -4,7 +4,9 @@ export default function Notes() {
   const [data, setData] = useState([]);
   const fetchData = async () => {
     try {
-      const response = await axios.get("http://localhost:3000/api/v1/notes/");
+      const response = await axios.get("http://localhost:3000/api/v1/notes/", {
+        withCredentials: true,
+      });
       setData(response.data);
     } catch (e) {
       console.log(e);

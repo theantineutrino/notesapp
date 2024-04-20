@@ -1,7 +1,6 @@
 import axios from "axios";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import Notes from "./Notes";
 export default function Login() {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({

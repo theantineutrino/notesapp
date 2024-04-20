@@ -45,17 +45,11 @@ exports.login = async (req, res, next) => {
       throw new Error("Incorrect password or username");
     }
     const token = signToken(user._id);
-    res.cookie("dov", token
-      ,
-      {
-      expires: new Date(
-        Date.now() + 5 * 24 * 60 * 60 * 1000
-      ),
+    res.cookie("dov", token, {
+      expires: new Date(Date.now() + 5 * 24 * 60 * 60 * 1000),
       // httpOnly: true,
       // secure: req.secure || req.headers["x-forwarded-proto"] === "https",
-    }
-  );
-
+    });
     res.status(200).json({
       status: "success",
       token,
@@ -80,6 +74,7 @@ exports.login = async (req, res, next) => {
 exports.protect = async (req, res, next) => {
   try {
     let token = req.cookies?.dov;
+    console.log(req.cookies);
     console.log(token);
     // if (token) {
     //   return jwt.verify(token, process.env.JWT_SECRET);
