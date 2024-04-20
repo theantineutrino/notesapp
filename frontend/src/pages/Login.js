@@ -14,10 +14,10 @@ export default function Login() {
     e.preventDefault();
     try {
       const response = await axios.post(
-        "http://localhost:3000/api/v1/users/login",
+        "https://notesapp-2hyf.onrender.com/api/v1/users/login",
         formData
       );
-      navigate("/Notes");
+      navigate("/notes");
       console.log("user loggedin : ", response.data);
     } catch (error) {
       console.error("Error creating post:", error);
