@@ -1,8 +1,9 @@
 import axios from "axios";
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import Notes from "./Notes";
 export default function Login() {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -17,6 +18,7 @@ export default function Login() {
         "http://localhost:3000/api/v1/users/login",
         formData
       );
+      navigate("/Notes");
       console.log("user loggedin : ", response.data);
     } catch (error) {
       console.error("Error creating post:", error);
